@@ -1,18 +1,21 @@
 import {useEffect, useState} from "react";
 import loginCase from '../usecases/loginCase';
-import {userStore} from "@/app/store/userStore";
+import {userStore} from "@/app/stores/userStore";
+import type {InputValType} from "@/modules/auth/types/FormTypes";
 
 const useLogin = () => {
     const {setUser} = userStore(state => state);
     const [loading, setLoading] = useState(false);
 
-    const doLogin = async (email: string, password: string) => {
+    // hooks handle what happend when an action occurs around the UI, but not
+    // e.g Loading toggle, handle errors and shows them up in UI and update stores
+    //
+    const doLogin = async (username: InputValType, password: InputValType) => {
         setLoading(true);
+
         try {
-            const user = await loginCase(email, password);
+            const user = await loginCase(username, password);
             setUser(user);
-        }catch (e: any) {
-            console.error(e.message);
         }finally {
             setLoading(false);
         }

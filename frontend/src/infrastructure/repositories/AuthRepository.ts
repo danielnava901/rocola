@@ -5,10 +5,9 @@ const authApi = new AuthApi();
 export class AuthRepository implements IAuthRepository{
 
     async login(username: string, password: string): Promise<any> {
-        const userResponse = await authApi.loginApi(username, password);
-        console.log({userResponse});
-
-        return userResponse;
+        const userResponse =  await authApi.loginApi(username, password);
+        const {data: {user}} = userResponse;
+        return user;
     }
 
     logout(): void {

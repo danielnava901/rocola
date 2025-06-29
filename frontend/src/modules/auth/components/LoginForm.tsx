@@ -3,20 +3,23 @@ import Input from "@/shared/components/atoms/Input";
 import {useEffect, useState} from "react";
 import {Text} from "@/shared/components/atoms/Text";
 import useLogin from "../hooks/useLogin";
+import type {InputValType} from "@/modules/auth/types/FormTypes";
 
-type InputValType = {
-    value: string,
-    error: string
-}
 const LoginForm = () => {
     const {loading, doLogin} = useLogin()
     const [username, setUserName] = useState<InputValType>({value: "", error: ""})
     const [password, setPassword] = useState<InputValType>({value: "", error: ""})
 
-    const onClickSubmit = () => {
-        if(username.error || password.error) {
-            return;
+
+    //onClickSubmit just call doLogin from usecase
+    // Componenten in UI only handle user actions, it just orchestrate actions
+    const onClickSubmit = async () => {
+        try {
+            await doLogin(username, password);
+        }catch (e) {
+            console.error({e})
         }
+
     }
 
     useEffect(() => {
@@ -47,7 +50,9 @@ const LoginForm = () => {
             <div className="w-full flex flex-col gap-2">
                 <Button size="large"
                         className="w-full"
-                        disabled={loading}>
+                        disabled={loading}
+                        onClick={onClickSubmit}
+                >
                     Entrar
                 </Button>
                 <Text as="span" size="sm" weight="bold" color="text-red-400"
