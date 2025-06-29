@@ -1,5 +1,5 @@
 # Hola DNV
 
 ```js
-let var1 = 'Example - dnv' 
+let var1 = 'Example - example' 
 ```
