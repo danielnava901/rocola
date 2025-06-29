@@ -1,3 +1,4 @@
+/*
 let audiusSdk = null;
 const initAudiusSdk = () => {
     audiusSdk = window.audiusSdk({
@@ -7,4 +8,4 @@ const initAudiusSdk = () => {
 initAudiusSdk();
 
 export { audiusSdk };
-
+*/

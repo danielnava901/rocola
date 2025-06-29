@@ -15,7 +15,7 @@ function createWindow() {
     });
 
     const dev = process.env.NODE_ENV === 'development';
-    console.log({dev});
+    console.log({dev1: !!dev ? "SI" : "NO", dev});
 
     if (dev) {
         win.loadURL('http://localhost:5173');

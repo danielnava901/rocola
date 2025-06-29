@@ -1,5 +1,5 @@
-import {AuthRepository} from "../../../infrastructure/repositories/AuthRepository";
-import IAuthRepository from "../repositories/IAuthRepository";
+import {AuthRepository} from "@/infrastructure/repositories/AuthRepository";
+import type IAuthRepository from "../repositories/IAuthRepository";
 
 
 const authRepository : IAuthRepository = new AuthRepository();

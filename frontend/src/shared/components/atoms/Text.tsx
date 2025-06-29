@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 type TextProps = {
-    as?: keyof JSX.IntrinsicElements; // 'h1' | 'h2' | 'p' | 'span', etc.
+    as?: React.ElementType; // 'h1' | 'h2' | 'p' | 'span', etc.
     children: React.ReactNode;
     weight?: "normal" | "medium" | "semibold" | "bold";
     size?: "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";

@@ -1,7 +1,7 @@
-import Button from "../../../shared/components/atoms/Button";
-import Input from "../../../shared/components/atoms/Input";
+import Button from "@/shared/components/atoms/Button";
+import Input from "@/shared/components/atoms/Input";
 import {useEffect, useState} from "react";
-import {Text} from "../../../shared/components/atoms/Text";
+import {Text} from "@/shared/components/atoms/Text";
 import useLogin from "../hooks/useLogin";
 
 type InputValType = {
@@ -9,7 +9,7 @@ type InputValType = {
     error: string
 }
 const LoginForm = () => {
-    const {loading, login} = useLogin()
+    const {loading, doLogin} = useLogin()
     const [username, setUserName] = useState<InputValType>({value: "", error: ""})
     const [password, setPassword] = useState<InputValType>({value: "", error: ""})
 
@@ -17,9 +17,6 @@ const LoginForm = () => {
         if(username.error || password.error) {
             return;
         }
-
-
-
     }
 
     useEffect(() => {
