@@ -1,20 +1,18 @@
 import { CircleUserRound } from 'lucide-react';
 import {useState} from "react";
 import {userStore} from "@/app/stores/userStore";
+import IconText from "@/shared/components/molecules/IconText";
 
 const UserButton = () => {
     const [showActions, setShowActions] = useState(false);
     const {setUser} = userStore(state => state);
 
-    return <div className="relative">
-        <button
-            className="p-2 text-gray-600 hover:text-red-600 hover:bg-red-50 hover:cursor-pointer
-                rounded-lg transition-colors"
+    return <div className="relative flex items-center">
+        <IconText
             onClick={() => {setShowActions(prev => !prev)}}
         >
             <CircleUserRound  />
-
-        </button>
+        </IconText>
         {
             showActions && <div className="absolute right-2 bottom-[-120px]
             bg-white shadow p-4 rounded hover:cursor-pointer

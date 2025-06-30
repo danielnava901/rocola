@@ -7,5 +7,5 @@ export const AuthRoute = ({children}) => {
     if(isAuthenticated) {
         return <Navigate to="/dashboard/playlist" replace />
     }
-    return <Outlet />;
+    return <Navigate to="/login" replace />;
 }

@@ -1,15 +1,14 @@
 import {Outlet} from "react-router-dom";
-import UserButton from "@/modules/dashboard/components/molecules/UserButton";
 import Header from "@/modules/dashboard/components/organisms/Header";
+import LeftSide from "@/modules/dashboard/components/organisms/LeftSide";
+import PlayingSongFooter from "@/modules/dashboard/components/organisms/PlayingSongFooter";
 
 const DashboardTemplate = () => {
     return (
         <div className="h-screen flex flex-col bg-gray-100">
             <Header />
             <div className="flex-1 flex overflow-hidden">
-                <div className="w-64 bg-gray-50 border-r border-gray-200 flex flex-col">
-                    dashboard left
-                </div>
+                <LeftSide />
                 <div className="flex-1 flex overflow-hidden">
                     <div className="flex-1 p-6 overflow-auto">
                         <Outlet />
@@ -19,9 +18,7 @@ const DashboardTemplate = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-white border-t border-gray-200 px-6 py-4">
-                footer playing song
-            </div>
+            <PlayingSongFooter />
         </div>
     )
 }

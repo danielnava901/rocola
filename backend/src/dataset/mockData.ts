@@ -65,3 +65,4 @@ export const mockPlaylists: Playlist[] = [
         coverImage: 'https://images.pexels.com/photos/167092/pexels-photo-167092.jpeg?auto=compress&cs=tinysrgb&w=400'
     }
 ];
+

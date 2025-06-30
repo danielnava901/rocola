@@ -3,6 +3,7 @@ require('dotenv').config();
 const { app, BrowserWindow } = require('electron');
 const { spawn } = require('child_process');
 const path = require('path');
+const waitOn = require('wait-on');
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -15,11 +16,17 @@ function createWindow() {
     });
 
     const dev = process.env.NODE_ENV === 'development';
-    console.log({dev1: !!dev ? "SI" : "NO", dev});
+    console.log({ dev1: dev ? 'SI' : 'NO', dev });
 
     if (dev) {
-        win.loadURL('http://localhost:5173');
-        //win.webContents.openDevTools();
+        waitOn({ resources: ['http://localhost:5173'], timeout: 10000 }, (err) => {
+            if (err) {
+                console.error('Vite frontend no respondió a tiempo:', err);
+            } else {
+                win.loadURL('http://localhost:5173');
+                win.webContents.openDevTools();
+            }
+        });
     } else {
         win.loadFile(path.join(__dirname, '../frontend/dist/index.html'));
     }

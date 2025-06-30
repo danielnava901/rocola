@@ -9,13 +9,15 @@ const useLogin = () => {
 
     // hooks handle what happend when an action occurs around the UI, but not
     // e.g Loading toggle, handle errors and shows them up in UI and update stores
-    //
     const doLogin = async (username: InputValType, password: InputValType) => {
         setLoading(true);
-
         try {
             const user = await loginCase(username, password);
             setUser(user);
+            return true
+        }catch (e: Error){
+            console.log("Error::: ", e.message);
+            return false
         }finally {
             setLoading(false);
         }

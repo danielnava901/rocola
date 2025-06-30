@@ -4,22 +4,22 @@ import {useEffect, useState} from "react";
 import {Text} from "@/shared/components/atoms/Text";
 import useLogin from "../hooks/useLogin";
 import type {InputValType} from "@/modules/auth/types/FormTypes";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
-    const {loading, doLogin} = useLogin()
-    const [username, setUserName] = useState<InputValType>({value: "", error: ""})
-    const [password, setPassword] = useState<InputValType>({value: "", error: ""})
+    const navigate = useNavigate();
+    const {loading, doLogin} = useLogin();
+    const [username, setUserName] = useState<InputValType>({value: "", error: ""});
+    const [password, setPassword] = useState<InputValType>({value: "", error: ""});
 
 
     //onClickSubmit just call doLogin from usecase
     // Componenten in UI only handle user actions, it just orchestrate actions
     const onClickSubmit = async () => {
-        try {
-            await doLogin(username, password);
-        }catch (e) {
-            console.error({e})
+        const success = await doLogin(username, password);
+        if (success) {
+            navigate('/dashboard/playlists');
         }
-
     }
 
     useEffect(() => {
