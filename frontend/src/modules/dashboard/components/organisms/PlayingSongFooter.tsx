@@ -8,11 +8,11 @@ const PlayingSongFooter = () => {
     return <div className="bg-white border-t border-gray-200 px-6 py-4 flex">
         <div className="flex items-center gap-4">
             <div className="border border-gray-400 rounded w-[85px] h-[85px]">
-                <img src={currentSong?.coverImage} alt=""/>
+                <img src={currentSong?.coverImage} alt="image"/>
             </div>
             <div className="flex flex-col">
-                <span className="text-lg text-gray-600 font-bold">Titulo</span>
-                <span className="text-sm text-gray-400">Artista</span>
+                <span className="text-lg text-gray-600 font-bold">{currentSong.title}</span>
+                <span className="text-sm text-gray-400">{currentSong.artist}</span>
             </div>
             <IconText>
                 <Heart />
@@ -33,7 +33,7 @@ const PlayingSongFooter = () => {
                            </div>
                            ) :
                            (
-                           <div className="border border-red-400 bg-red-400 p-2 rounded-full flex items-center justify-center
+                           <div className="border border-red-500 bg-red-500 p-2 rounded-full flex items-center justify-center
                            cursor-pointer hover:opacity-75"
                                 onClick={() => {playSong()}}
                            >
@@ -47,7 +47,7 @@ const PlayingSongFooter = () => {
             </div>
             <div className="flex items-center gap-2">
                 <div className="text-sm">00:00</div>
-                <div className="h-[5px] bg-red-400 rounded w-full cursor-pointer">
+                <div className="h-[5px] bg-red-500 rounded w-full cursor-pointer">
                     &nbsp;
                 </div>
                 <div className="text-sm">03:00</div>
@@ -58,7 +58,7 @@ const PlayingSongFooter = () => {
                 <Volume2 />
             </IconText>
             <div className="h-[35px] flex items-center">
-                <div className="h-[5px] bg-red-400 rounded w-[100px] cursor-pointer">
+                <div className="h-[5px] bg-red-500 rounded w-[100px] cursor-pointer">
                     &nbsp;
                 </div>
             </div>

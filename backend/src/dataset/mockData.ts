@@ -4,6 +4,7 @@ export const mockSongs: Song[] = [
     {
         id: '1',
         title: 'Bohemian Rhapsody',
+        playlist_id: 1,
         artist: 'Queen',
         album: 'A Night at the Opera',
         duration: '5:55',
@@ -12,6 +13,7 @@ export const mockSongs: Song[] = [
     {
         id: '2',
         title: 'Hotel California',
+        playlist_id: 2,
         artist: 'Eagles',
         album: 'Hotel California',
         duration: '6:30',
@@ -20,6 +22,7 @@ export const mockSongs: Song[] = [
     {
         id: '3',
         title: 'Stairway to Heaven',
+        playlist_id: 1,
         artist: 'Led Zeppelin',
         album: 'Led Zeppelin IV',
         duration: '8:02',
@@ -28,6 +31,7 @@ export const mockSongs: Song[] = [
     {
         id: '4',
         title: 'Sweet Child O\' Mine',
+        playlist_id: 2,
         artist: 'Guns N\' Roses',
         album: 'Appetite for Destruction',
         duration: '5:03',
@@ -36,6 +40,7 @@ export const mockSongs: Song[] = [
     {
         id: '5',
         title: 'Imagine',
+        playlist_id: 1,
         artist: 'John Lennon',
         album: 'Imagine',
         duration: '3:07',
@@ -44,6 +49,7 @@ export const mockSongs: Song[] = [
     {
         id: '6',
         title: 'Billie Jean',
+        playlist_id: 2,
         artist: 'Michael Jackson',
         album: 'Thriller',
         duration: '4:54',

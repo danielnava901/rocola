@@ -2,12 +2,14 @@ import { List } from 'lucide-react';
 import IconText from "@/shared/components/molecules/IconText";
 import usePlayLists from "@/modules/dashboard/hooks/usePlayLists";
 import {useEffect} from "react";
+import {useNavigate} from 'react-router-dom';
 
 const PlayListMenu = () => {
     const {getPlaylist, loading, playlists} = usePlayLists();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        getPlaylist()
+        getPlaylist();
     }, []);
 
     return (
@@ -18,7 +20,9 @@ const PlayListMenu = () => {
                     playlists.map(playlist => (
                         <IconText
                             key={playlist.id}
-                            onClick={() => {}} text={playlist.name}>
+                            onClick={() => {
+                                navigate(`playlists/${playlist.id}`);
+                            }} text={playlist.name}>
                             <List  />
                         </IconText>
                     ))

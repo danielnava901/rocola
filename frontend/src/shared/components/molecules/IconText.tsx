@@ -1,12 +1,11 @@
-const IconText = ({onClick, children, text = '', ...props}) => {
-    return <div className="
+const IconText = ({onClick, children, text = '', px = "px-4", py = "py-1", ...props}) => {
+    return <div className={`
         flex items-center
         rounded-lg
-        px-4
-        py-1
-    "
+        ${px}
+        ${py}
+    `}
     onClick={onClick}
-    {...props}
     >
         <div className="
             flex
@@ -22,7 +21,9 @@ const IconText = ({onClick, children, text = '', ...props}) => {
             gap-4
             py-2
             px-4
-        ">
+        "
+            {...props}
+        >
             {children}
             {text}
         </div>

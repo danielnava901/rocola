@@ -3,6 +3,7 @@ import {mockSongs} from "../dataset/mockData";
 export type Song = {
     id: string,
     title: string,
+    playlist_id: string | number,
     artist: string,
     album: string,
     duration: string,

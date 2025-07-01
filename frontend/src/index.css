@@ -3,3 +3,26 @@
 #audius-login-button {
     background-color: #db2f38;
 }
+
+
+.bg-patter-1 {
+    background-color: #f7e6ee;
+    opacity: 0.6;
+    background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #f7e6ee 18px ), repeating-linear-gradient( #f7454555, #f74545 );
+}
+
+.bg-patter-2 {
+    background-color: #f7e6ee;
+    opacity: 0.6;
+    background-image:  linear-gradient(135deg, #f74545 25%, transparent 25%), linear-gradient(225deg, #f74545 25%, transparent 25%), linear-gradient(45deg, #f74545 25%, transparent 25%), linear-gradient(315deg, #f74545 25%, #f7e6ee 25%);
+    background-position:  18px 0, 18px 0, 0 0, 0 0;
+    background-size: 36px 36px;
+    background-repeat: repeat;
+}
+
+.bg-patter-3 {
+    background-color: #f7e6ee;
+    opacity: 0.6;
+    background-image: radial-gradient(circle at center center, #f74545, #f7e6ee), repeating-radial-gradient(circle at center center, #f74545, #f74545, 18px, transparent 36px, transparent 18px);
+    background-blend-mode: multiply;
+}

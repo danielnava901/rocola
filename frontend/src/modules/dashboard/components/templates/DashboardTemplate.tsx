@@ -2,8 +2,10 @@ import {Outlet} from "react-router-dom";
 import Header from "@/modules/dashboard/components/organisms/Header";
 import LeftSide from "@/modules/dashboard/components/organisms/LeftSide";
 import PlayingSongFooter from "@/modules/dashboard/components/organisms/PlayingSongFooter";
+import {songStore} from "@/app/stores/songStore";
 
 const DashboardTemplate = () => {
+    const {currentSong} = songStore(state => state);
     return (
         <div className="h-screen flex flex-col bg-gray-100">
             <Header />
@@ -18,7 +20,7 @@ const DashboardTemplate = () => {
                     </div>
                 </div>
             </div>
-            <PlayingSongFooter />
+            {currentSong && <PlayingSongFooter/>}
         </div>
     )
 }

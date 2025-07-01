@@ -1,7 +1,7 @@
 // project-electron/backend/src/index.ts
 import express from 'express';
 import cors from 'cors';
-import {mockPlaylists} from "./dataset/mockData";
+import {mockPlaylists, mockSongs} from "./dataset/mockData";
 
 
 const app = express();
@@ -22,13 +22,34 @@ app.post('/api/login', (_, res) => {
     });
 });
 
-app.get('/api/playlists', (_, res) => {
+app.get('/api/playlists', (req, res) => {
+    const playlist = req.query?.playlist || -1;
+
+    let playlists = mockPlaylists;
+    if(+playlist > 0) {
+        playlists = playlists.filter(_playlist => +_playlist.id === +playlist)
+    }
+
     res.status(201).json({
         data: {
-            playlists: mockPlaylists
+            playlists: playlists
         }
     });
 });
+
+app.get('/api/songs', (req, res) => {
+    const playlist = req.query?.playlist || -1;
+
+    let songs = mockSongs;
+    if(+playlist > 0) {
+        songs = songs.filter(song => +song.playlist_id === +playlist)
+    }
+    res.status(201).json({
+        data: {
+            songs: songs
+        }
+    })
+})
 
 app.listen(PORT, () => {
     console.log(`API listening at http://localhost:${PORT}`);
