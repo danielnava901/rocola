@@ -1,4 +1,4 @@
-import { Play, Heart } from "lucide-react";
+import { Play, Heart, Pause } from "lucide-react";
 import { useParams } from 'react-router-dom';
 import useSongsByPlayList from "@/modules/dashboard/hooks/useSongsByPlayList";
 import {useState} from "react";
@@ -7,9 +7,28 @@ import {songStore} from "@/app/stores/songStore";
 
 const SongListPage = () => {
     const { playlistId } = useParams();
-    const {currentSong, setCurrentSong, isPlaying, setIsPlaying} = songStore(state => state);
+    const {
+        currentSong,
+        setCurrentSong,
+        isPlaying,
+        setIsPlaying,
+        favorites,
+        setFavorites
+    } = songStore(state => state);
     const {playlist, loading} = useSongsByPlayList(playlistId);
     const [songHover, setSongHover] = useState(null);
+
+    const addOrRemoveFavorites = (song) => {
+        let newFavs = [...favorites];
+        const index = newFavs.indexOf(song);
+
+        if (index === -1) {
+            newFavs.push(song); // Agregar si no existe
+        } else {
+            newFavs.splice(index, 1); // Quitar si existe
+        }
+        setFavorites(newFavs);
+    }
 
     if(!playlist || loading) {
         return <div></div>
@@ -75,14 +94,22 @@ const SongListPage = () => {
                                         currentSong.id === song.id
                                 ) && (
                                     <>
-                                        <IconText className="flex
+                                        <IconText className={`
+                                            flex
                                             items-center
                                             justify-center
                                             rounded-full
-                                            hover:text-red-500
                                             w-[35px] h-[35px] p-2
-                                        " px="px-0" py="py-0">
-                                            <Heart className="w-[30px] h-[30px]" />
+                                        `} px="px-0" py="py-0"
+                                            onClick={() => {
+                                                addOrRemoveFavorites(song.id)
+                                            }}
+                                        >
+                                            <Heart className={`
+                                                w-[30px] 
+                                                h-[30px]
+                                                ${favorites.indexOf(song.id) >= 0 ? 'text-red-500' : ''}
+                                            `} />
                                         </IconText>
 
                                         {
@@ -92,17 +119,18 @@ const SongListPage = () => {
                                                     justify-center
                                                     rounded-full
                                                     border
-                                                    border-red-500
-                                                    bg-red-500
+                                                    border-gray-500
+                                                    bg-gray-500
                                                     text-white
                                                     w-[35px] h-[35px] p-2
-                                               " px="px-0" py="py-0"
+                                                " px="px-0" py="py-0"
                                                     onClick={() => {
-                                                      setCurrentSong(song)
+                                                        setCurrentSong(song);
+                                                        setIsPlaying(false);
                                                     }}
-                                                >
-                                                    <Play className="w-[30px] h-[30px]" />
-                                                </IconText>
+                                                 >
+                                                    <Pause className="w-[30px] h-[30px]" />
+                                                 </IconText>
                                                 :
                                                 <IconText className="flex
                                                     items-center
@@ -115,7 +143,8 @@ const SongListPage = () => {
                                                     w-[35px] h-[35px] p-2
                                                 " px="px-0" py="py-0"
                                                     onClick={() => {
-                                                        setCurrentSong(song)
+                                                        setCurrentSong(song);
+                                                        setIsPlaying(true);
                                                     }}
                                                 >
                                                     <Play className="w-[30px] h-[30px]" />

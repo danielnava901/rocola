@@ -3,7 +3,8 @@ import IconText from "@/shared/components/molecules/IconText";
 import useSongControl from "@/modules/dashboard/hooks/useSongControl";
 
 const PlayingSongFooter = () => {
-    const {isPlaying, playSong, pauseSong, currentSong} = useSongControl();
+    const {isPlaying, playSong, pauseSong, currentSong, favorites} = useSongControl();
+
 
     return <div className="bg-white border-t border-gray-200 px-6 py-4 flex">
         <div className="flex items-center gap-4">
@@ -15,7 +16,9 @@ const PlayingSongFooter = () => {
                 <span className="text-sm text-gray-400">{currentSong.artist}</span>
             </div>
             <IconText>
-                <Heart />
+                <Heart className={`
+                    ${favorites.indexOf(currentSong.id) >= 0 ? 'text-red-500' : ''}
+                `} />
             </IconText>
         </div>
         <div className="flex-2 px-4 flex flex-col justify-between py-4 gap-2">

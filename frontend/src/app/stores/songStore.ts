@@ -5,7 +5,8 @@ type SongStore = {
     currentSong: any
     isPlaying: boolean,
     setCurrentSong: (song: any) => void,
-    setIsPlaying: (isPlaying: boolean) => void
+    setIsPlaying: (isPlaying: boolean) => void,
+    favorites: any[],
 }
 
 export const songStore = create<SongStore>()(
@@ -13,8 +14,10 @@ export const songStore = create<SongStore>()(
         (set, get) => ({
             currentSong: null,
             isPlaying: false,
+            favorites: [],
             setCurrentSong: (song) => set({ currentSong: song }),
-            setIsPlaying: (isPlaying) => set({isPlaying})
+            setIsPlaying: (isPlaying) => set({isPlaying}),
+            setFavorites: (newFavorites) => set({favorites: newFavorites})
         }),
         {
             name: 'song-rocola-storage',

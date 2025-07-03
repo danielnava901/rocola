@@ -1,7 +1,7 @@
 import {songStore} from "@/app/stores/songStore";
 
 const useSongControl = () => {
-    const {isPlaying, currentSong, setIsPlaying} = songStore(state => state);
+    const {isPlaying, currentSong, setIsPlaying, favorites} = songStore(state => state);
 
     const playSong = () => {
         setIsPlaying(true);
@@ -11,7 +11,7 @@ const useSongControl = () => {
         setIsPlaying(false);
     }
 
-    return {isPlaying, playSong, pauseSong, currentSong}
+    return {isPlaying, playSong, pauseSong, currentSong, favorites}
 }
 
 export default useSongControl;
